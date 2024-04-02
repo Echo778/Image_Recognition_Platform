@@ -1,0 +1,11 @@
+flask
+torch
+numpy
+pillow
+django
+django-admin
+torchvision
+matplotlib
+opencv-python
+pandas
+requests
