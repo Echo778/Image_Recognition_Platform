@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    {% if processed_image_data %}
+        <h2>Processed Image</h2>
+        <img src="data:image/png;base64,{{ processed_image_data }}" alt="Processed Image">
+    {% endif %}
+</body>
+</html>

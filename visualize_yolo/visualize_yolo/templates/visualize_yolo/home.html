@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO</title>
+</head>
+<body>
+    <h1>YOLO (Image Only)</h1>
+    <form action="{% url 'process_image' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" onchange="displaySelectedImage(event)">
+        <input type="submit" value="Process Image">
+    </form>
+
+        <!-- Display selected image -->
+    <div id="imagePreview"></div>
+
+    <script>
+        function displaySelectedImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const imageUrl = event.target.result;
+                const imageElement = document.createElement('img');
+                imageElement.src = imageUrl;
+
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.innerHTML = ''; // Clear previous image (if any)
+                imagePreview.appendChild(imageElement);
+            };
+
+
+            reader.readAsDataURL(file);
+        }
+
+        window.addEventListener('pageshow', function(event) {
+            const page = event.target;
+            if (page === window) {
+                // This condition ensures that the event is triggered only for the top-level window
+                document.getElementById('imageInput').value = '';
+            }
+        });
+    </script>
+
+<!--    {% if display_image_data %}-->
+
+<!--        <h2>Display Image</h2>-->
+<!--        <img src="data:image/png;base64,{{ display_image_data }}" alt="Display Image">-->
+<!--    {% endif %}-->
+
+</body>
+</html>

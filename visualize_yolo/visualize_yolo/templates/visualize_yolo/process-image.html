@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <a href="/" class="return-to-home-button">Return to Home</a>
+
+    <!-- Optional: CSS styling for the button -->
+    <style>
+        .return-to-home-button {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+
+    {% if processed_image_data %}
+        <h2>Processed Image</h2>
+        <img src="data:image/png;base64,{{ processed_image_data }}" alt="Processed Image">
+    {% endif %}
+</body>
+</html>
